@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class=".TodoDetailActivityBinding">
+        <variable
+            name="viewModel"
+            type="team.benchem.todoapp.model.TodoModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/moduleActivityTodoDetail_tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/module_activity_tododetail_title"/>
+
+        <EditText
+            android:id="@+id/moduleActivityTodoDetail_etTodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.todo}"
+            android:layout_below="@+id/moduleActivityTodoDetail_tvTitle"/>
+
+        <Button
+            android:id="@+id/moduleActivityTodoDetail_btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_confirm"
+            android:layout_below="@+id/moduleActivityTodoDetail_etTodo"
+            android:onClick="onConfirmClick"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_cancel"
+            android:layout_below="@+id/moduleActivityTodoDetail_btnConfirm"
+            android:onClick="onCancelClick"/>
+
+    </RelativeLayout>
+
+</layout>
