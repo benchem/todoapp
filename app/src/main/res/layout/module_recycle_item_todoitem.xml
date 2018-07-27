@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class=".TodoRowItemBinding">
+        <variable
+            name="todo"
+            type="team.benchem.todoapp.model.TodoModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp">
+
+        <CheckBox
+            android:id="@+id/moduleRecycleItemTodoItem_cbComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:checked="@={todo.completed}"/>
+
+        <TextView
+            android:id="@+id/moduleRecycleItemTodoItem_tvTodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/moduleRecycleItemTodoItem_cbComplete"
+            android:text="@{todo.todo}"/>
+
+        <Button
+            android:id="@+id/moduleRecycleItemTodoItem_btnUpdate"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/moduleRecycleItemTodoItem_btnRemove"
+            android:text="@string/module_recycle_item_todoitem_edit"/>
+
+        <Button
+            android:id="@+id/moduleRecycleItemTodoItem_btnRemove"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/module_recycle_item_todoitem_remove"/>
+
+    </RelativeLayout>
+
+</layout>

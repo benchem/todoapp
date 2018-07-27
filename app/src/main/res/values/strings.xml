@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">备忘录</string>
+    <string name="module_activity_main_add">添加</string>
+    <string name="module_activity_main_addSuccess">添加成功</string>
+    <string name="module_activity_main_updateSuccess">更新成功</string>
+    <string name="module_activity_main_removeMessage">是否移除[%s]?</string>
+    <string name="module_activity_main_removeSuccess">移除成功</string>
+    <string name="module_recycle_item_todoitem_edit">编辑</string>
+    <string name="module_recycle_item_todoitem_remove">移除</string>
+    <string name="module_activity_tododetail_title">请输入您的备忘内容</string>
+    <string name="module_activity_tododetail_titleIsEmpty">备忘内容不允许空</string>
+    <string name="alertDialog_tips">提示</string>
+    <string name="button_confirm">确定</string>
+    <string name="button_cancel">取消</string>
+</resources>
