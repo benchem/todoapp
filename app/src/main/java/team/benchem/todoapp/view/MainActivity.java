@@ -40,14 +40,14 @@ public class MainActivity extends AppCompatActivity implements TodosAdapter.Todo
         setContentView(R.layout.module_activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.module_activity_main);
 
-        todosAdapter = new TodosAdapter(getTods(), this);
+        todosAdapter = new TodosAdapter(getTodoItems(), this);
         recyclerView = binding.moduleActivityMainRecyclerView;
         recyclerView.setAdapter(todosAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    private List<TodoModel> getTods(){
+    private List<TodoModel> getTodoItems(){
         //remove call load todoItems
         TodoModel item = new TodoModel();
         item.setTodo("Hello World!");

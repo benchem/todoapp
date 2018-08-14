@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Todo备忘录</string>
+    <string name="module_activity_login_loginName">用户名</string>
+    <string name="module_activity_login_password">密码</string>
+    <string name="module_activity_login_loginButton">登录</string>
+    <string name="module_activity_login_registerButton">注册</string>
     <string name="module_activity_main_add">添加</string>
     <string name="module_activity_main_addSuccess">添加成功</string>
     <string name="module_activity_main_updateSuccess">更新成功</string>
