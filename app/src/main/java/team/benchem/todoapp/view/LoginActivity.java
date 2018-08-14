@@ -77,19 +77,25 @@ public class LoginActivity extends Activity {
 //        }
 
 
-        Ajax.setBaseHost("https://ds-suf-uat.xunmu.wang");
-
-        Map<String, Object> params = new HashMap<>();
-        params.put("mobile", "13750378429");
-
         final KProgressHUD hud = KProgressHUD.create(LoginActivity.this)
                 .setStyle(KProgressHUD.Style.ANNULAR_DETERMINATE)
                 .setLabel("Please wait")
                 .setMaxProgress(100)
                 .show();
 
+
+        //API网关，全局设置一次即可
+        Ajax.setBaseHost("https://ds-suf-uat.xunmu.wang");
+
+        //请求参数
+        Map<String, Object> params = new HashMap<>();
+        params.put("mobile", "13750378429");
+
+        //异步发起远程调用
         Ajax.get("/customer/finddomainbymobile",params)
                 .subscribe(new Ajax.ResponseHandler() {
+
+                    //调用完毕
                     @Override
                     public void onResponse(String responseStr) {
                         JSONObject result = JSON.parseObject(responseStr);
@@ -102,6 +108,7 @@ public class LoginActivity extends Activity {
                         hud.dismiss();
                     }
 
+                    //调用出错
                     @Override
                     public void onError(Exception ex) {
                         hud.dismiss();
