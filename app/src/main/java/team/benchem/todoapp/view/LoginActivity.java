@@ -5,15 +5,22 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
+
+import com.alibaba.fastjson.JSONArray;
 
 import team.benchem.todoapp.LoginActivityBinding;
 import team.benchem.todoapp.R;
+import team.benchem.todoapp.service.SufCustomerService;
+import team.benchem.todoapp.service.TodoNoteService;
 import team.benchem.todoapp.util.Global;
 
 public class LoginActivity extends Activity {
 
     LoginActivityBinding binding;
+
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,5 +53,19 @@ public class LoginActivity extends Activity {
 
     public void onRegisterClick(View view){
 
+        try {
+//            TodoNoteService service = new TodoNoteService();
+//            service.queryList(10, 25);
+
+            SufCustomerService customerService = new SufCustomerService();
+            JSONArray list = customerService.queryDomain("13750378429");
+            for(int index=0; index<list.size(); index++){
+                Log.d(TAG, list.get(index).toString());
+            }
+
+        }catch (Exception ex){
+            Log.e(TAG, "onRegisterClick: "+ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 }
