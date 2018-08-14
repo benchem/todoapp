@@ -8,7 +8,7 @@ import jodd.http.HttpResponse;
 import jodd.util.StringPool;
 
 public class HttpClientHelper {
-    public static String get(String host, String path, HashMap<String, String> headers, HashMap<String, Object> queryParam){
+    public static String get(String host, String path, Map<String, String> headers, Map<String, Object> queryParam){
         Map<String, String> params = new HashMap<>();
         for (Map.Entry<String, Object> item : queryParam.entrySet()) {
             params.put(item.getKey(), item.getValue().toString());
@@ -28,7 +28,7 @@ public class HttpClientHelper {
         return response.bodyText();
     }
 
-    public static String post(String host, String uri, HashMap<String, String> headers, String postData){
+    public static String post(String host, String uri, Map<String, String> headers, String postData){
         String url = pathUrl(host, uri);
         HttpRequest request = HttpRequest.post(url);
         request.contentType("application/json", StringPool.UTF_8);
