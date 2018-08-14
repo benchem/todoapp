@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">备忘录</string>
+    <string name="app_name">Todo备忘录</string>
     <string name="module_activity_main_add">添加</string>
     <string name="module_activity_main_addSuccess">添加成功</string>
     <string name="module_activity_main_updateSuccess">更新成功</string>
