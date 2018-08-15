@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<application>
-    <servicecenter>https://sc-suf-uat.xunmu.wang</servicecenter>
-    <servicename>sufService</servicename>
-    <publickey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC-HBqS6eQWgxhNKdolQO5oEFd0YsodRjxq7R_ofGjlydMFEmACMYwZjwjPbvUr3Vmd5b1DLuFL5ILrc0kKJCRJERCEv5wAUBJ3GtGlmRQehc55O2q5PorBA4FNHNePEBtha7VnSXQndHuc17MESK7bY7v5Xf-kUc1C3Drk8JW39QIDAQAB</publickey>
-</application>
