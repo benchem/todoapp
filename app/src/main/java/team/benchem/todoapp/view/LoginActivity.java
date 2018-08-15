@@ -19,8 +19,6 @@ import java.util.Map;
 
 import team.benchem.todoapp.LoginActivityBinding;
 import team.benchem.todoapp.R;
-import team.benchem.todoapp.service.SufCustomerService;
-import team.benchem.todoapp.service.TodoNoteService;
 import team.benchem.todoapp.util.Ajax;
 import team.benchem.todoapp.util.Global;
 
