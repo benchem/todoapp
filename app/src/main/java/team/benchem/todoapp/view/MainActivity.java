@@ -18,9 +18,15 @@ import com.alibaba.fastjson.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import Ice.Communicator;
+import Ice.ObjectAdapter;
+import Ice.ObjectPrx;
+import Ice.Util;
 import team.benchem.todoapp.MainActivityBinding;
 import team.benchem.todoapp.R;
+import team.benchem.todoapp.communication.impl.JsonServicePortalImpl;
 import team.benchem.todoapp.model.TodoModel;
+import team.benchem.communication.*;
 
 /**
  * https://www.androidhive.info/android-databinding-in-recyclerview-profile-screen/
@@ -34,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements TodosAdapter.Todo
     final int CREATE_TODO_REQUESTCODE = 100;
     final int UPDATE_TODO_REQUESTCODE = 101;
 
+    Communicator communicator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,36 @@ public class MainActivity extends AppCompatActivity implements TodosAdapter.Todo
         recyclerView.setAdapter(todosAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        Runnable networkRunnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    communicator = Util.initialize();
+                    ObjectPrx objPrx = communicator.stringToProxy("LonntecRPC:default -h 192.168.206.21 -p 9090")
+                            .ice_twoway().ice_timeout(-1).ice_secure(false);
+                    JsonServiceCenterPrx serviceCenterPrx = JsonServiceCenterPrxHelper.checkedCast(objPrx);
+
+                    ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints("callbackReceiver","default -h localhost");
+                    adapter.add(new JsonServicePortalImpl(), Util.stringToIdentity("callbackReceiver"));
+                    adapter.activate();
+
+                    JsonServicePortalPrx servicePortal = JsonServicePortalPrxHelper.uncheckedCast(adapter.createProxy(Util.stringToIdentity("callbackReceiver")));
+                    serviceCenterPrx.register("benchan", servicePortal);
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        };
+
+        Thread networkThread = new Thread(networkRunnable);
+        networkThread.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        communicator.destroy();
     }
 
     private List<TodoModel> getTodoItems(){

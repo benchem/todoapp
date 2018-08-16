@@ -9,6 +9,7 @@ public enum  SystemStateCode implements  StateCode {
     APIGATEWAY_NOTRESPONSE      (-102,  "API网关访问超时"),
     SERVICECENTER_NOTRESPONSE   (-103,  "微服务中心访问超时"),
     REMOTECALLING               (-104,  "远程调用中"),
+    HANDLER_NOT_REGISTER        (-106,  "客户端未注册对应的消息处理器")
     ;
 
     private final Integer stateCode;

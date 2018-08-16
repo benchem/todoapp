@@ -1,7 +1,14 @@
 apply plugin: 'com.android.application'
-apply plugin: 'slice'
+apply plugin: 'com.zeroc.gradle.ice-builder.slice'
 
 sourceCompatibility = jdkVersion
+
+slice {
+    java {
+        files = [file("src/main/slice/RpcProtocol.ice")]
+        compat = true
+    }
+}
 
 android {
     compileSdkVersion 26
@@ -36,7 +43,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:support-annotations:27.1.1'
-    implementation "com.zeroc:ice:$iceVersion"
+    implementation "com.zeroc:ice-compat:3.7.1"
     implementation 'com.alibaba:fastjson:1.1.68.android'
     implementation 'org.jodd:jodd-http:3.7.1'
     implementation 'com.kaopiz:kprogresshud:1.0.2'
